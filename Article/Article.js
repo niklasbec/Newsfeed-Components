@@ -85,8 +85,72 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Heeeeeeeeeeeeeeeeey does this work or naaaaaaaaaaaaaaaaaaaaaaaaah',
+    date: 'Jan 1st, 2019',
+    firstParagraph: `HEY ANU HEY ANU HEY ANU HEY ANU HEY ANU HEY ANU HEY ANU HEY ANU HEY ANU HEY ANU HEY ANU HEY ANU HEY ANU HEY ANU HEY ANU
+     HEY ANU HEY ANU HEY ANU HEY ANU HEY ANU HEY ANU HEY ANU HEY ANU HEY ANU HEY ANU HEY ANU HEY ANU HEY ANU HEY ANU HEY ANU HEY ANU HEY ANU 
+     HEY ANU HEY ANU HEY ANU HEY ANU `,
+
+    secondParagraph: `Watch me go! Watch me go! Watch me go! Watch me go! Watch me go! Watch me go! Watch me go! Watch me go! Watch me go! Watch me go! Watch me go! Watch me go! Watch me go! Watch me go! 
+    Watch me go! Watch me go! Watch me go! Watch me go! Watch me go! Watch me go! Watch me go! Watch me go! 
+    Watch me go! Watch me go! Watch me go! Watch me go! Watch me go! Watch me go! Watch me go! Watch me go! Watch me go! Watch me go!  `,
+
+    thirdParagraph: `Gimme 3 stars pls Gimme 3 stars pls Gimme 3 stars pls Gimme 3 stars pls Gimme 3 stars pls Gimme 3 stars pls Gimme 3 stars pls Gimme 3 stars pls 
+    Gimme 3 stars pls Gimme 3 stars pls Gimme 3 stars pls Gimme 3 stars pls Gimme 3 stars pls Gimme 3 stars pls Gimme 3 stars pls 
+    Gimme 3 stars pls Gimme 3 stars pls Gimme 3 stars pls Gimme 3 stars pls Gimme 3 stars pls Gimme 3 stars pls Gimme 3 stars pls Gimme 3 stars pls `
   }
 ];
+
+const createComponent = function(title, date, firstParagraph, secondParagraph, thirdParagraph) {
+  const articleDiv = document.createElement('div')
+  const heading = document.createElement('h2')
+  const dateIs = document.createElement('p')
+  const firstPara = document.createElement('p')
+  const secondPara = document.createElement('p')
+  const thirdPara = document.createElement('p')
+  const span = document.createElement('span')
+  
+  //Append
+
+  articleDiv.append(heading)
+  articleDiv.append(dateIs)
+  articleDiv.append(firstPara)
+  articleDiv.append(secondPara)
+  articleDiv.append(thirdPara)
+  articleDiv.append(span)
+
+  //Class names
+
+  dateIs.classList.add('date') 
+  span.classList.add('expandButton') 
+
+  //Content
+
+  heading.textContent = title
+  dateIs.textContent = date
+  firstPara.textContent = firstParagraph
+  secondPara.textContent = secondParagraph
+  thirdPara.textContent = thirdParagraph
+
+  //Eventlistener
+
+  span.addEventListener('click', () => {
+    articleDiv.classList.toggle('.article-open')
+  })
+
+
+  //return
+
+  return articleDiv
+}
+
+const articles = document.querySelector('.articles')
+data.forEach( (item) => {
+  articles.append(createComponent(item.title, item.date, item.firstParagraph, item.secondParagraph, item.thirdParagraph))
+})
+
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   

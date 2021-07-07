@@ -8,6 +8,41 @@ let menuItems = [
   'Music',
   'Log Out'
 ];
+const createMenuComponent = function (array) {
+  
+  let newListItem = ''
+
+  const menu = document.createElement('div')
+  const list = document.createElement('ul')
+  array.forEach( (item) => {
+    newListItem = document.createElement('li')
+    newListItem.textContent = item
+    list.append(newListItem)
+  })
+
+  //Append
+  menu.append(list)
+
+  //Class names
+
+  menu.classList.add('menu')
+
+  //Eventlistener
+  const menuButton = document.querySelector('.menu-button')
+
+  menuButton.addEventListener('click', () => {
+    menu.classList.toggle('menu--open')
+  })
+
+
+  //return
+
+  return menu
+}
+
+const header = document.querySelector('.header')
+header.append(createMenuComponent(menuItems))
+
 
 /* 
 
